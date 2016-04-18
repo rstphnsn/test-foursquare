@@ -9,7 +9,7 @@ angular.module('App.services')
                 return response.data.response.venues;
             },
             function (error) {
-                throw new Error(error);
+                console.error('Error: VenueFactory.getVenues failed',  error);
             }
         );
     };
