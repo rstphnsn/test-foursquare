@@ -1,0 +1,8 @@
+.sass-cache
+html
+npm-debug.log
+node_modules
+*.sublime-*
+.DS_Store
+Desktop.ini
+Thumbs.db

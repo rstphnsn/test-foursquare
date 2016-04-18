@@ -1,0 +1,6 @@
+{
+    "env": "local",
+    "service_url": "https://api.foursquare.com/v2/",
+    "client_id": "1KEF0OTTJI1BEGLKDYGMULQEBTOQIW5GQENJZTGFNSNE4Z3X",
+    "client_secret": "BCW01JMYOJQGIALC3EBJI4D1E02K1SYB4GUR4XC4AM0M2HC5"
+}

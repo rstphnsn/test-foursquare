@@ -1,0 +1,82 @@
+//  ## HOME PAGE SPECIFIC  ----------------------------------------------------------//
+
+.venues {
+    margin-top: 100px;
+}
+
+.venue {
+    margin-top: 50px;
+}
+
+.venue h3 {
+    margin-bottom: 10px;
+}
+
+.venue h3:first-letter {
+    text-transform: uppercase;
+}
+
+.venue .info ul {
+    margin: 0;
+    padding: 0;
+}
+
+.venue .info li {
+    list-style: none;
+    margin: 0;
+}
+
+.venue .icon {
+    margin-right: 5px;
+}
+
+.message {
+    background-color: #D90000;
+    padding: 5px 10px;
+}
+
+.message p {
+    margin: 0;
+}
+
+.loading {
+    margin-top: 50px;
+    position: relative;
+}
+
+
+.loader {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.dot {
+    animation: fx 1000ms ease infinite 0ms;
+    border: 2px solid white;
+    border-radius: 50%;
+    float: left;
+    height: 10px;
+    margin: 0 5px;
+    transform: scale(0);
+    width: 10px;
+}
+
+.dot:nth-child(2) {
+    animation: fx 1000ms ease infinite 300ms;
+}
+
+.dot:nth-child(3) {
+    animation: fx 1000ms ease infinite 600ms;
+}
+
+@keyframes fx {
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+    }
+}

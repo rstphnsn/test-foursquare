@@ -1,0 +1,52 @@
+<div class="view view-home" ng-controller="VenueController as vm">
+
+    <main class="main">
+
+        <section class="search">
+
+            <h1>Search for venues</h1>
+            <p>Enter a location to search for nearby venues using the Foursquare API.</p>
+
+            <form ng-submit="vm.search(vm.searchLocation)">
+                <div class="message message-error" ng-show="vm.message">
+                    <p>{{vm.message}}</p>
+                </div>
+                <div class="form-input">
+                    <label for="search-location">Location</label>
+                    <input type="text" id="search-location" ng-model="vm.searchLocation" placeholder="York, UK" required>
+                </div>
+                <div class="form-buttons">
+                    <input type="submit" value="Search">
+                </div>
+            </form>
+
+        </section>
+
+        <section ng-show="vm.loading" class="loading">
+            <div class="loader">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </section>
+
+        <section class="venues" ng-show="vm.venues">
+
+            <h2>Venues</h2>
+            <div class="venue" ng-repeat="venue in vm.venues | orderBy : 'distance'">
+                <h3>{{venue.name}}</h3>
+                <div class="info">
+                    <ul>
+                        <li ng-if="venue.categories[0]"><img ng-if="venue.categories[0]" ng-src="{{venue.categories[0].icon.prefix + 'bg_64' + venue.categories[0].icon.suffix}}" alt="{{venue.categories[0].name}}" class="icon" width="20" height="20">{{venue.categories[0].name}}</li>
+                        <li ng-if="venue.distance"><span>{{venue.distance * 0.621371 | number:2}} miles away</li>
+                        <li ng-if="venue.url"><a href="{{venue.url}}">Find out more</a></li>
+                        <li><a href="http://maps.google.com/?q={{venue.location.lat}},{{venue.location.lng}}" target="_blank">Get Directions</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
