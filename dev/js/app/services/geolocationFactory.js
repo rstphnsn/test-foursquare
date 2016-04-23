@@ -21,14 +21,15 @@ angular.module('App.services')
     },
 
     deg2rad = function (deg) {
-        return deg * (Math.PI / 180);
+        var radians = deg * (Math.PI / 180);
+        return parseFloat(radians.toFixed(4));
     },
 
-    getDistanceFromLatLonInKm = function (lat1, lon1, lat2, lon2) {
+    getDistanceFromLatLonInKm = function (lat1, lng1, lat2, lng2) {
         var RadiusOfEarth = 6371,
-            degreeLat = deg2rad(lat2 - lat1),
-            degreeLon = deg2rad(lon2 - lon1),
-            a = Math.sin(degreeLat / 2) * Math.sin(degreeLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(degreeLon / 2) * Math.sin(degreeLon / 2),
+            degreeLat = this.deg2rad(lat2 - lat1),
+            degreeLon = this.deg2rad(lng2 - lng1),
+            a = Math.sin(degreeLat / 2) * Math.sin(degreeLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(degreeLon / 2) * Math.sin(degreeLon / 2),
             c,
             distance;
         c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
@@ -38,7 +39,7 @@ angular.module('App.services')
 
     getDistanceBetweenTwoLocations = function (location1, location2) {
         if (location1.lat && location1.lng && location2.lat && location2.lng) {
-            return getDistanceFromLatLonInKm(location1.lat, location1.lng, location2.lat, location2.lng);
+            return this.getDistanceFromLatLonInKm(location1.lat, location1.lng, location2.lat, location2.lng);
         } else {
             throw new Error('Incorrect location arguments');
         }
@@ -46,6 +47,7 @@ angular.module('App.services')
 
     return {
         getGeolocation: getGeolocation,
+        deg2rad: deg2rad,
         getDistanceBetweenTwoLocations: getDistanceBetweenTwoLocations,
         getDistanceFromLatLonInKm: getDistanceFromLatLonInKm
     };
