@@ -97,7 +97,7 @@ module.exports = function (grunt) {
             },
             js: {
                 files: ['<%= paths.dev %>/js/**/*.js'],
-                tasks: ['js', 'replace-local']
+                tasks: ['js', 'replace-local', 'test']
             },
             html: {
                 files: ['<%= paths.dev %>/src/index.html'],
@@ -285,9 +285,9 @@ module.exports = function (grunt) {
     grunt.registerTask('html', ['clean:html', 'copy:html']);
     grunt.registerTask('templates', ['clean:templates', 'copy:templates']);
 
-    grunt.registerTask('dev', ['js', 'replace-local', 'scss', 'images', 'fonts', 'html', 'templates', 'root', 'connect:dev', 'api', 'watch']);
+    grunt.registerTask('dev', ['js', 'replace-local', 'test', 'scss', 'images', 'fonts', 'html', 'templates', 'root', 'connect:dev', 'api', 'watch']);
 
     // Targets
-    grunt.registerTask('default', ['js', 'replace-local', 'scss', 'images', 'fonts', 'html', 'templates', 'root', 'api']);
+    grunt.registerTask('default', ['js', 'replace-local', 'test', 'scss', 'images', 'fonts', 'html', 'templates', 'root', 'api']);
 
 };
